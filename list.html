@@ -1,0 +1,22 @@
+{% for product in products %}
+  <div>
+    <h3>{{ product.name }}</h3>
+    <img src="{{ product.image.url }}" width="100">
+    <p>₹{{ product.price }}</p>
+    <a href="{% url 'product_detail' product.id %}">View</a>
+  </div>
+{% endfor %}
+<h1>{{ product.name }}</h1>
+<img src="{{ product.image.url }}" width="300">
+<p>{{ product.description }}</p>
+<p>₹{{ product.price }}</p>
+<button>Add to Cart</button>
+<h2>Checkout</h2>
+<p>Order Summary...</p>
+<button>Place Order</button>
+<h2>Register/Login</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Submit</button>
+</form>
